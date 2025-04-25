@@ -14,16 +14,19 @@
 
 int	key_handler(int keycode, t_game *so_long)
 {
+	ft_printf("Key pressed: %d\n", keycode);
+	
 	mlx_clear_window(so_long->mlx, so_long->mlx_win);
-	if (keycode == 13)
+	// WASD keys
+	if (keycode == 119 || keycode == 65362) // W or Up Arrow
 		go_up(so_long->map);
-	if (keycode == 1)
+	if (keycode == 115 || keycode == 65364) // S or Down Arrow
 		go_down(so_long->map);
-	if (keycode == 0)
+	if (keycode == 97 || keycode == 65361)  // A or Left Arrow
 		go_left(so_long->map);
-	if (keycode == 2)
+	if (keycode == 100 || keycode == 65363) // D or Right Arrow
 		go_right(so_long->map);
-	if (keycode == 53)
+	if (keycode == 65307) // ESC key
 	{
 		ft_printf("you closed the game");
 		exit(0);

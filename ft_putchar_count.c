@@ -14,6 +14,9 @@
 
 void	ft_putchar_count(char c, int *count)
 {
-	write(1, &c, 1);
+	int ret;
+	
+	ret = write(1, &c, 1);
+	(void)ret; // Suppress the unused variable warning
 	(*count)++;
 }

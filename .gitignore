@@ -1,0 +1,33 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+so_long
+
+# Libraries
+*.a
+*.lib
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Dependency directories
+mlx_linux/
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+._* 

@@ -23,17 +23,20 @@ int	go_up(t_map *map)
 		j = 0;
 		while (map->data[i][j])
 		{
-			if (map->data[i][j] == 'P' && (map->data[i - 1][j] == '0' ||
-			map->data[i - 1][j] == 'C'))
+			if (map->data[i][j] == 'P')
 			{
-				updatemap(map, UP, i, j);
-				map->data[i][j] = '0';
-				map->num_mov++;
-				return (ft_printf("num of moves %d\n", map->num_mov));
+				if (map->data[i - 1][j] == '1')
+					return (0); // Return if the next position is a wall
+				if (map->data[i - 1][j] == '0' || map->data[i - 1][j] == 'C')
+				{
+					updatemap(map, UP, i, j);
+					map->data[i][j] = '0';
+					map->num_mov++;
+					return (ft_printf("num of moves %d\n", map->num_mov));
+				}
+				else if (map->data[i - 1][j] == 'E' && map->collectible == 0)
+					exitgame();
 			}
-			else if (map->data[i][j] == 'P' && (map->data[i - 1][j] == 'E') &&
-			map->collectible == 0)
-				exitgame();
 			j++;
 		}
 		i++;
@@ -52,17 +55,20 @@ int	go_down(t_map *map)
 		j = 0;
 		while (map->data[i][j])
 		{
-			if (map->data[i][j] == 'P' && (map->data[i + 1][j] == '0' ||
-			map->data[i + 1][j] == 'C'))
+			if (map->data[i][j] == 'P')
 			{
-				updatemap(map, DOWN, i, j);
-				map->data[i][j] = '0';
-				map->num_mov++;
-				return (ft_printf("num of moves %d\n", map->num_mov));
+				if (map->data[i + 1][j] == '1')
+					return (0); // Return if the next position is a wall
+				if (map->data[i + 1][j] == '0' || map->data[i + 1][j] == 'C')
+				{
+					updatemap(map, DOWN, i, j);
+					map->data[i][j] = '0';
+					map->num_mov++;
+					return (ft_printf("num of moves %d\n", map->num_mov));
+				}
+				else if (map->data[i + 1][j] == 'E' && map->collectible == 0)
+					exitgame();
 			}
-			else if (map->data[i][j] == 'P' && (map->data[i + 1][j] == 'E') &&
-			map->collectible == 0)
-				exitgame();
 			j++;
 		}
 		i++;
@@ -81,17 +87,20 @@ int	go_left(t_map *map)
 		j = 0;
 		while (map->data[i][j])
 		{
-			if (map->data[i][j] == 'P' && (map->data[i][j - 1] == '0' ||
-			map->data[i][j - 1] == 'C'))
+			if (map->data[i][j] == 'P')
 			{
-				updatemap(map, LEFT, i, j);
-				map->data[i][j] = '0';
-				map->num_mov++;
-				return (ft_printf("num of moves %d\n", map->num_mov));
+				if (map->data[i][j - 1] == '1')
+					return (0); // Return if the next position is a wall
+				if (map->data[i][j - 1] == '0' || map->data[i][j - 1] == 'C')
+				{
+					updatemap(map, LEFT, i, j);
+					map->data[i][j] = '0';
+					map->num_mov++;
+					return (ft_printf("num of moves %d\n", map->num_mov));
+				}
+				else if (map->data[i][j - 1] == 'E' && map->collectible == 0)
+					exitgame();
 			}
-			else if (map->data[i][j] == 'P' && (map->data[i][j - 1] == 'E') &&
-			map->collectible == 0)
-				exitgame();
 			j++;
 		}
 		i++;
@@ -110,17 +119,20 @@ int	go_right(t_map *map)
 		j = 0;
 		while (map->data[i][j])
 		{
-			if (map->data[i][j] == 'P' && (map->data[i][j + 1] == '0' ||
-			map->data[i][j + 1] == 'C'))
+			if (map->data[i][j] == 'P')
 			{
-				updatemap(map, RIGHT, i, j);
-				map->data[i][j] = '0';
-				map->num_mov++;
-				return (ft_printf("num of moves %d\n", map->num_mov));
+				if (map->data[i][j + 1] == '1')
+					return (0); // Return if the next position is a wall
+				if (map->data[i][j + 1] == '0' || map->data[i][j + 1] == 'C')
+				{
+					updatemap(map, RIGHT, i, j);
+					map->data[i][j] = '0';
+					map->num_mov++;
+					return (ft_printf("num of moves %d\n", map->num_mov));
+				}
+				else if (map->data[i][j + 1] == 'E' && map->collectible == 0)
+					exitgame();
 			}
-			else if (map->data[i][j] == 'P' && (map->data[i][j + 1] == 'E') &&
-			map->collectible == 0)
-				exitgame();
 			j++;
 		}
 		i++;

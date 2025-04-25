@@ -30,13 +30,13 @@ void	updatemap(t_map *map, t_dir dir, int i, int j)
 	{
 		if (map->data[i + 1][j] == 'C')
 			map->collectible--;
-			map->data[i + 1][j] = 'P';
+		map->data[i + 1][j] = 'P';
 	}
 	else if (dir == RIGHT)
 	{
 		if (map->data[i][j + 1] == 'C')
-					map->collectible--;
-				map->data[i][j + 1] = 'P';
+			map->collectible--;
+		map->data[i][j + 1] = 'P';
 	}
 	else if (dir == LEFT)
 	{

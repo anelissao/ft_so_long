@@ -16,7 +16,8 @@ CC			=	gcc
 
 FLAGS		=	-Wall -Wextra -Werror
 
-MLX_FLAGS	=	-lmlx -framework OpenGL -framework AppKit
+# Linux MLX flags
+MLX_FLAGS	=	-Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 SRC			=	util.c					\
 				utils2.c				\
@@ -42,10 +43,10 @@ OBJ			=	$(SRC:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJ)
-				$(CC) $(SRC) $(MLX_FLAGS) -o $(NAME) -g
+				$(CC) $(OBJ) $(MLX_FLAGS) -o $(NAME) -g
 
 %.o			:	%.c $(HEADER)
-				$(CC) $(FLAGS) -Imlx -c $< -o $@
+				$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 	
 clean 		:
 				rm -f $(OBJ)

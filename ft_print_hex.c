@@ -16,6 +16,7 @@ void	ft_print_hex(unsigned long n, char c, int *count)
 {
 	char	*str;
 
+	str = "0123456789abcdef";
 	if (c == 'x')
 		str = "0123456789abcdef";
 	else if (c == 'X')

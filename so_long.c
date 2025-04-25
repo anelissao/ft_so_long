@@ -28,7 +28,7 @@ void	images(t_img	*s_img, t_game	so_long)
 
 void	hooks(t_game *so_long)
 {
-	mlx_hook(so_long->mlx_win, 02, 0, key_handler, so_long);
+	mlx_hook(so_long->mlx_win, 2, 1L<<0, key_handler, so_long);
 	mlx_hook(so_long->mlx_win, 17, 0, ft_close, NULL);
 }
 
